@@ -22,6 +22,8 @@ export const api = {
   getProfile: (userId) => request(`/auth/profile/${userId}`),
   updateProfile: (userId, payload) =>
     request(`/auth/profile/${userId}`, { method: "PUT", body: JSON.stringify(payload) }),
+  getCustomers: () => request("/auth/customers"),
+  getDrivers: () => request("/auth/drivers"),
   getDashboard: () => request("/contracts/dashboard"),
   getPromos: () => request("/contracts/promos"),
   getVehicles: (params = {}) => {

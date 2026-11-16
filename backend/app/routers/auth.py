@@ -1,5 +1,5 @@
 import hashlib
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
@@ -9,7 +9,9 @@ from app.core.database import get_db, transaction_scope
 from app.models.entities import Customer, DriverProfile, UserAccount
 from app.schemas.schemas import (
     AuthResponse,
+    CustomerOut,
     CustomerRegisterRequest,
+    DriverProfileOut,
     DriverRegisterRequest,
     LoginRequest,
     ProfileUpdateRequest,
@@ -198,3 +200,17 @@ def update_profile(
                 if payload.license_image_url is not None:
                     d.license_image_url = payload.license_image_url
     return _build_auth_response(db, user)
+
+
+@router.get("/customers", response_model=List[CustomerOut])
+def list_customers(db: Session = Depends(get_db)):
+    return list(
+        db.execute(select(Customer).order_by(Customer.id.desc())).scalars().all()
+    )
+
+
+@router.get("/drivers", response_model=List[DriverProfileOut])
+def list_drivers(db: Session = Depends(get_db)):
+    return list(
+        db.execute(select(DriverProfile).order_by(DriverProfile.id.desc())).scalars().all()
+    )

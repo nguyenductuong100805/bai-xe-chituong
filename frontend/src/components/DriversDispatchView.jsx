@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import { CheckCircle2, Clock, Navigation, ShieldCheck, Star, Users } from "lucide-react";
+import { api } from "../api/client";
 import { formatDate, formatVND } from "../utils/format";
 
 export default function DriversDispatchView({ vehicles, contracts, onCheckoutContract }) {
+  const [drivers, setDrivers] = useState([]);
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    api.getDrivers().then(setDrivers).catch(() => {});
+    api.getCustomers().then(setCustomers).catch(() => {});
+  }, []);
+
   const driverVehicles = vehicles.filter((v) => v.rental_type === "WITH_DRIVER");
   const activeDriverContracts = contracts.filter(
     (c) => c.rental_type === "WITH_DRIVER" && c.status === "ACTIVE"
@@ -143,63 +153,110 @@ export default function DriversDispatchView({ vehicles, contracts, onCheckoutCon
         </div>
       </div>
 
-      {/* Danh bạ tài xế */}
+      {/* Danh bạ tài xế thật từ CSDL */}
       <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
         <div className="border-b border-slate-100 px-5 py-4">
           <h3 className="text-base font-bold text-[#131b2e]">
-            Danh bạ & Hồ sơ Năng lực Tài xế
+            Danh bạ & Hồ sơ Tài xế ({drivers.length})
           </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
             <thead className="border-b border-slate-200 bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500">
               <tr>
-                <th className="px-4 py-3">Tài xế</th>
-                <th className="px-4 py-3">Số điện thoại</th>
-                <th className="px-4 py-3">Xe phụ trách</th>
-                <th className="px-4 py-3">Phí tài xế / ngày</th>
-                <th className="px-4 py-3">Đánh giá</th>
-                <th className="px-4 py-3">Trạng thái</th>
+                <th className="px-4 py-3">Họ tên tài xế</th>
+                <th className="px-4 py-3">Ngày sinh / SĐT / Email</th>
+                <th className="px-4 py-3">CCCD / Địa chỉ</th>
+                <th className="px-4 py-3">Hạng bằng lái</th>
+                <th className="px-4 py-3">Ảnh bằng lái</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {driverVehicles.map((v) => (
-                <tr key={v.id} className="hover:bg-slate-50">
-                  <td className="px-4 py-3 font-semibold text-slate-900">
-                    {v.driver_name || "Tài xế dự phòng"}
-                  </td>
-                  <td className="px-4 py-3 font-mono text-xs text-slate-600">
-                    {v.driver_phone || "0909xxxxxx"}
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="font-semibold text-slate-800">
-                      {v.brand} {v.model}
-                    </div>
-                    <div className="font-mono text-xs text-slate-500">{v.license_plate}</div>
-                  </td>
-                  <td className="px-4 py-3 font-bold text-[#00236f]">
-                    {formatVND(v.driver_daily_fee)}
-                  </td>
-                  <td className="px-4 py-3 font-semibold text-amber-500">
-                    ★ {v.rating} ({v.trips_count} chuyến)
-                  </td>
-                  <td className="px-4 py-3">
-                    {v.status === "RENTED" ? (
-                      <span className="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700">
-                        Đang trên chuyến
-                      </span>
-                    ) : v.status === "AVAILABLE" ? (
-                      <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-                        Sẵn sàng nhận cuốc
-                      </span>
-                    ) : (
-                      <span className="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700">
-                        Xe đang bảo trì
-                      </span>
-                    )}
+              {drivers.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="px-4 py-6 text-center text-xs text-slate-400">
+                    Chưa có tài xế nào đăng ký trên hệ thống.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                drivers.map((d) => (
+                  <tr key={d.id} className="hover:bg-slate-50">
+                    <td className="px-4 py-3 font-semibold text-slate-900">{d.full_name}</td>
+                    <td className="px-4 py-3 text-xs text-slate-600">
+                      <div>SĐT: <strong>{d.phone}</strong></div>
+                      <div>NS: {d.date_of_birth || "—"} &bull; {d.email || "—"}</div>
+                    </td>
+                    <td className="px-4 py-3 text-xs text-slate-600">
+                      <div>CCCD: {d.id_card}</div>
+                      <div>{d.address || "—"}</div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className="rounded-lg bg-[#acedff] px-2.5 py-1 text-xs font-bold text-[#004e5c]">
+                        Hạng {d.license_class}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {d.license_image_url ? (
+                        <img
+                          src={d.license_image_url}
+                          alt={`Bằng lái ${d.full_name}`}
+                          className="h-12 w-20 rounded-lg border object-cover"
+                        />
+                      ) : (
+                        <span className="text-xs text-slate-400">Chưa tải ảnh</span>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Danh bạ khách hàng thật từ CSDL */}
+      <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+        <div className="border-b border-slate-100 px-5 py-4">
+          <h3 className="text-base font-bold text-[#131b2e]">
+            Danh bạ Khách hàng ({customers.length})
+          </h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-[13px]">
+            <thead className="border-b border-slate-200 bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+              <tr>
+                <th className="px-4 py-3">Họ tên</th>
+                <th className="px-4 py-3">Ngày sinh / SĐT / Email</th>
+                <th className="px-4 py-3">CCCD / GPLX</th>
+                <th className="px-4 py-3">Địa chỉ & Liên hệ khẩn cấp</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {customers.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="px-4 py-6 text-center text-xs text-slate-400">
+                    Chưa có khách hàng nào trên hệ thống.
+                  </td>
+                </tr>
+              ) : (
+                customers.map((c) => (
+                  <tr key={c.id} className="hover:bg-slate-50">
+                    <td className="px-4 py-3 font-semibold text-slate-900">{c.full_name}</td>
+                    <td className="px-4 py-3 text-xs text-slate-600">
+                      <div>SĐT: <strong>{c.phone}</strong></div>
+                      <div>NS: {c.date_of_birth || "—"} &bull; {c.email || "—"}</div>
+                    </td>
+                    <td className="px-4 py-3 text-xs text-slate-600">
+                      <div>CCCD: {c.id_card}</div>
+                      <div>GPLX: {c.driver_license || "—"}</div>
+                    </td>
+                    <td className="px-4 py-3 text-xs text-slate-600">
+                      <div>{c.address || "—"}</div>
+                      <div className="text-slate-400">Khẩn cấp: {c.emergency_contact || "—"}</div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
