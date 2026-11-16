@@ -1,5 +1,6 @@
 import base64
 from datetime import date
+import os
 from pathlib import Path
 from typing import List, Optional
 import uuid
@@ -25,7 +26,7 @@ from app.schemas.schemas import (
 from app.services.vehicle_service import VehicleService
 
 router = APIRouter(prefix="/api/vehicles", tags=["Vehicles"])
-UPLOAD_DIR = Path("uploads")
+UPLOAD_DIR = Path("/tmp/uploads") if os.environ.get("VERCEL") else Path("uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 

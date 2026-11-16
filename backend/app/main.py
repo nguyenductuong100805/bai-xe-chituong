@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -9,7 +10,8 @@ from app.core.database import Base, SessionLocal, engine
 from app.routers import auth, contracts, vehicles
 from app.routers.auth import ensure_admin_account
 
-Path("uploads").mkdir(parents=True, exist_ok=True)
+UPLOAD_DIR = Path("/tmp/uploads") if os.environ.get("VERCEL") else Path("uploads")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @asynccontextmanager
@@ -39,7 +41,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 
 app.include_router(auth.router)
 app.include_router(vehicles.router)
