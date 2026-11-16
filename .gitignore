@@ -1,0 +1,20 @@
+# Python / FastAPI
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.db
+*.sqlite3
+backend/uploads/
+
+# Node / React / Vite
+frontend/node_modules/
+frontend/dist/
+.env
+.env.local
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

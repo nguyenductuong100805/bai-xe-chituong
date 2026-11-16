@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c5c5d3", "primary-fixed-dim": "#b6c4ff", "inverse-primary": "#b6c4ff", "on-secondary-container": "#006172", "on-tertiary": "#ffffff", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "secondary-container": "#57dffe", "on-primary-fixed-variant": "#264191", "background": "#faf8ff", "surface-variant": "#dae2fd", "on-secondary-fixed": "#001f26", "surface-container-high": "#e2e7ff", "tertiary-fixed": "#dbe1ff", "on-surface-variant": "#444651", "on-tertiary-fixed-variant": "#003ea8", "tertiary-container": "#00389a", "tertiary": "#00246b", "secondary-fixed": "#acedff", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#b4c5ff", "error": "#ba1a1a", "on-tertiary-fixed": "#00174b", "inverse-surface": "#283044", "error-container": "#ffdad6", "surface-bright": "#faf8ff", "surface-container": "#eaedff", "on-surface": "#131b2e", "primary": "#00236f", "surface-container-highest": "#dae2fd", "on-tertiary-container": "#8da9ff", "on-primary": "#ffffff", "surface-container-low": "#f2f3ff", "secondary": "#00687a", "surface-dim": "#d2d9f4", "surface-tint": "#4059aa", "primary-fixed": "#dce1ff", "outline": "#757682", "on-primary-fixed": "#00164e", "surface": "#faf8ff", "primary-container": "#1e3a8a", "inverse-on-surface": "#eef0ff", "on-secondary-fixed-variant": "#004e5c", "secondary-fixed-dim": "#4cd7f6", "on-primary-container": "#90a8ff", "on-error": "#ffffff", "on-background": "#131b2e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "margin-desktop": "2rem", "space-md": "1rem", "gutter": "1.25rem", "margin-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin": "1rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": ["Be Vietnam Pro"], "display": ["Be Vietnam Pro"], "kpi-metric": ["Be Vietnam Pro"], "table-data": ["Be Vietnam Pro"], "headline-md": ["Be Vietnam Pro"], "headline-sm": ["Be Vietnam Pro"], "label-md": ["Be Vietnam Pro"], "headline-lg": ["Be Vietnam Pro"], "body-sm": ["Be Vietnam Pro"], "headline-lg-mobile": ["Be Vietnam Pro"], "label-sm": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "kpi-metric": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "table-data": ["13.5px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-secondary-container selection:text-on-secondary-container"><aside class="fixed left-0 top-0 bottom-0 w-72 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col flex-1 min-h-0"><div class="px-space-md py-space-md bg-surface-container-lowest flex items-center gap-space-sm"><img alt="AutoFleet Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIq-rXoD5PAhWENbeAk1nKXkLOQ4b-qVia0vSRe7M3Z2P1vdMS7oPlaeAZcsBNhMAZhAseUjStdXFZ_9nSDt0rM-Iyrs5GLyV2UCWLFYRX_Mugu15ew_I7gBbmOj4pqUDAwHVncMXK8Qu4qPumbRaN8IgFpFhY3Jhg_dv8ArKSuPk0SCYwc_7bKbkjzhya1aN-BZg-IatRf8-UUk780qJ0E8n-Xh29ZcTZzbxRJDc"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight truncate">AutoFleet Pro</span><span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase font-semibold">ERP</span></div><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Hệ thống Quản lý Vận hành Xe</span></div></div><div class="px-space-md pt-space-xs pb-space-sm"><div class="px-space-sm py-space-xs rounded-lg bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md"><span class="material-symbols-outlined text-sm text-secondary">warehouse</span><span class="truncate font-medium">Kho Tân Bình (TP.HCM)</span></div><span class="w-2 h-2 rounded-full bg-secondary"></span></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm font-semibold rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2.5 transition-colors bg-primary-container text-on-primary-container font-headline-sm font-semibold rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="truncate">Tổng quan vận hành</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="fleet-management" href="#"><span class="material-symbols-outlined text-xl">directions_car</span><span class="truncate">Quản lý Đội xe</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="bookings-contracts" href="#"><span class="material-symbols-outlined text-xl">contract_edit</span><span class="truncate">Đơn đặt xe &amp; Hợp đồng</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="driver-dispatch" href="#"><span class="material-symbols-outlined text-xl">badge</span><span class="truncate">Điều phối &amp; Tài xế</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="customers" href="#"><span class="material-symbols-outlined text-xl">groups</span><span class="truncate">Khách hàng &amp; Đối tác</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reports-financials" href="#"><span class="material-symbols-outlined text-xl">finance</span><span class="truncate">Báo cáo &amp; Tài chính</span></a><a class="flex items-center gap-space-sm px-space-sm py-2.5 rounded-xl font-headline-sm text-headline-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-xl">settings</span><span class="truncate">Cài đặt hệ thống</span></a></nav></div><div class="p-space-md bg-surface-container-low/70 m-space-sm rounded-xl"><div class="flex items-start gap-space-xs mb-1"><span class="material-symbols-outlined text-sm text-primary mt-0.5">location_on</span><div class="min-w-0"><p class="font-label-sm text-label-sm font-semibold text-on-surface truncate">Tổng kho Tân Bình</p><p class="font-label-sm text-label-sm text-on-surface-variant truncate">Chi nhánh TP. Hồ Chí Minh</p></div></div><div class="pt-space-xs mt-space-xs flex items-center justify-between text-on-surface-variant"><span class="font-label-sm text-label-sm">AutoFleet v2.4</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">Enterprise</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] px-space-lg"><div class="h-full w-full flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span><input class="w-full pl-9 pr-space-md py-2 rounded-xl bg-surface-container-lowest font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary/40 shadow-[0_1px_3px_rgba(15,23,42,0.05)] transition-all" placeholder="Tìm biển số xe, tên khách hàng, mã hợp đồng..." type="text"/></div><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant shadow-[0_1px_3px_rgba(15,23,42,0.05)] cursor-pointer hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm text-secondary">storefront</span><span class="font-body-sm text-body-sm text-on-surface font-medium whitespace-nowrap">Toàn bộ bãi xe (Q7, Tân Bình, Cầu Giấy)</span><span class="material-symbols-outlined text-xs">keyboard_arrow_down</span></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs px-space-md py-2 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold hover:bg-primary-container transition-all shadow-[0_1px_3px_rgba(15,23,42,0.1)] active:scale-95" type="button"><span class="material-symbols-outlined text-lg">add</span><span class="hidden sm:inline">Tạo đơn thuê mới</span></button><div class="flex items-center gap-space-xs"><button class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors shadow-[0_1px_3px_rgba(15,23,42,0.05)]" title="Hỗ trợ vận hành" type="button"><span class="material-symbols-outlined text-xl">help_outline</span></button><button class="relative w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors shadow-[0_1px_3px_rgba(15,23,42,0.05)]" title="Thông báo hạn xe" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsZXJ269IaRk8xRYREMTa4mr5Gi2DS5dyJGg8iDevxqMxBsVXWzQTwEwQJ1rmXZDlAa6yL3y4_Li28Lw0R4hX-O7DdbWw4eW6mEKMM_D1t5g_cMBKfh806D6kgkjVBN6RmTi-RCHw0EOPAJKBAgaKaLDQ_e9YMZCMU6OM6KiyTAJWuf3ZR3YsXTHR3YQI7BO3wT3p4GnLOLAhNrLN23lnAmfu4-ILFT8IZUEa-KUE"/><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-secondary-container ring-2 ring-surface-container-lowest" title="Trực tuyến"></span></div><div class="hidden md:flex flex-col text-left"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Nguyễn Tuấn Anh</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Quản lý Điều hành</span></div></div></div></div></header><main class="w-full pt-16 bg-surface px-space-lg py-space-lg min-h-screen"><div class="flex flex-col w-full">
+<!-- Operational Workspace Header -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md mb-space-xl">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Trực tiếp thời gian thực</span>
+<span class="text-outline text-xs">/</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="realtime-clock">Cập nhật lúc: 14:35 - 24/10/2024</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">Tổng quan Vận hành Đội xe</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Giám sát trạng thái 148 đầu xe, tiến độ điều phối tài xế và cảnh báo hợp đồng toàn chi nhánh</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-lg text-secondary">refresh</span>
+<span class="font-headline-sm text-headline-sm font-semibold">Làm mới dữ liệu</span>
+</button>
+<div class="relative inline-block text-left" id="exportMenuDropdown">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-xl bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all shadow-sm" onclick="document.getElementById('exportOptions').classList.toggle('hidden')" type="button">
+<span class="material-symbols-outlined text-lg">download</span>
+<span class="font-headline-sm text-headline-sm font-semibold">Xuất báo cáo ngày</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-surface-container-lowest shadow-xl z-30 py-2" id="exportOptions">
+<a class="flex items-center gap-space-xs px-space-md py-2 text-on-surface font-body-sm text-body-sm hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined text-base text-error">picture_as_pdf</span>
+<span>Báo cáo PDF (.pdf)</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-md py-2 text-on-surface font-body-sm text-body-sm hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined text-base text-secondary">table_view</span>
+<span>Xuất Excel (.xlsx)</span>
+</a>
+</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold hover:bg-primary-container transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span>Phân công gấp</span>
+</button>
+</div>
+</div>
+<!-- Key Operational Metric KPIs (Bento-like 5 Cards Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md mb-space-xl">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Tổng số phương tiện</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-kpi-metric text-kpi-metric text-on-surface font-bold">148</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">xe</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">garage</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">98 Tự lái <span class="text-outline">|</span> 50 Có tài</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span>+12%
+        </span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Xe đang lăn bánh</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-kpi-metric text-kpi-metric text-on-surface font-bold">116</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ 148</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-xl">route</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tỷ lệ lấp đầy</span>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">78.4% Đạt đỉnh</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Xe sẵn sàng tại bãi</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-kpi-metric text-kpi-metric text-secondary font-bold">24</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">xe rảnh</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tân Bình: <strong class="text-on-surface">14</strong></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Phú Mỹ Hưng: <strong class="text-on-surface">10</strong></span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Cần xử lý &amp; Cảnh báo</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-kpi-metric text-kpi-metric text-error font-bold">08</span>
+<span class="font-body-sm text-body-sm text-error font-medium">vụ việc</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-xl">warning</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-error-container/30 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between text-on-surface">
+<span class="font-label-sm text-label-sm text-error font-semibold">5 Bảo dưỡng</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">3 Quá giờ trả</span>
+</div>
+</div>
+<!-- KPI 5 -->
+<div class="bg-primary text-on-primary rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-primary-container/40 pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed font-semibold">Doanh thu hôm nay</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold tracking-tight">58.45M</span>
+<span class="font-body-sm text-body-sm text-primary-fixed">VNĐ</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-xl">payments</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-primary-container/60 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed">Kế hoạch: 55.0M</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed font-bold">106.2% Mục tiêu</span>
+</div>
+</div>
+</div>
+<!-- Operational Middle Section: Visual Charts & Station Hubs -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Segment Fleet Capacity Breakdown (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Công suất khai thác theo Phân khúc Xe</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tỷ trọng xe lăn bánh thực tế trên tổng quy mô từng dòng xe</p>
+</div>
+<span class="px-space-sm py-1 rounded-lg bg-surface-container font-label-sm text-label-sm font-semibold text-on-surface-variant">Tuần 43/2024</span>
+</div>
+<!-- Segment Progress Bars -->
+<div class="space-y-space-md pt-space-xs">
+<!-- Sedan 4-5 chỗ -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">directions_car</span>
+                Sedan 4-5 chỗ (Vios, City, Camry)
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">42 / 48 xe <span class="text-secondary ml-1">(87.5%)</span></span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all duration-500" style="width: 87.5%"></div>
+</div>
+</div>
+<!-- SUV / Crossover 7 chỗ -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">directions_car</span>
+                SUV / Crossover 7 chỗ (Fortuner, Everest, SantaFe)
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">38 / 45 xe <span class="text-primary ml-1">(84.4%)</span></span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500" style="width: 84.4%"></div>
+</div>
+</div>
+<!-- MPV Gia đình -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-secondary-container text-base">airport_shuttle</span>
+                MPV Gia đình &amp; Đô thị (Xpander, Carnival, Custin)
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">22 / 28 xe <span class="text-on-secondary-container ml-1">(78.6%)</span></span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-on-secondary-container transition-all duration-500" style="width: 78.6%"></div>
+</div>
+</div>
+<!-- Bán tải Pickup -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-base">local_shipping</span>
+                Bán tải Pickup (Ranger, Hilux)
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">8 / 15 xe <span class="text-on-surface-variant ml-1">(53.3%)</span></span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-outline transition-all duration-500" style="width: 53.3%"></div>
+</div>
+</div>
+<!-- Limousine VIP Hạng sang -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-base">stars</span>
+                Limousine VIP Hạng sang (DCar Transit, Alphard)
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">6 / 12 xe <span class="text-primary-container ml-1">(50.0%)</span></span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary-container transition-all duration-500" style="width: 50.0%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Segment Quick Metrics Footer -->
+<div class="mt-space-lg pt-space-md bg-surface-container-low/70 -mx-space-lg -mb-space-lg px-space-lg py-3 rounded-b-xl flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>Sedan tăng mạnh 18% cuối tuần</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>Dòng Limousine trống 6 xe chiều nay</span>
+</div>
+<button class="font-label-md text-label-md text-secondary hover:underline font-bold">Xem dự báo nhu cầu →</button>
+</div>
+</div>
+<!-- Hub Stations & Yards Real-time Status (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Phân bổ xe tại Trạm bãi TP.HCM</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sức chứa &amp; lưu lượng xe sẵn sàng nhận khách</p>
+</div>
+<span class="material-symbols-outlined text-secondary">share_location</span>
+</div>
+<!-- Station Hub Items -->
+<div class="space-y-space-md">
+<!-- Hub 1: Tân Bình -->
+<div class="p-space-md rounded-xl bg-surface-container-low transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">flight_takeoff</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Bãi Tổng Sân Bay Tân Bình</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Số 20 Cộng Hòa, Phường 4, Tân Bình</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-primary font-headline-sm text-headline-sm font-bold shadow-sm">14 xe trống</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Đang dọn rửa / Kiểm tra: <strong class="text-on-surface font-semibold">4 xe</strong></span>
+<span class="text-secondary font-semibold">Sức chứa: 65/80 xe</span>
+</div>
+</div>
+<!-- Hub 2: Q7 Phú Mỹ Hưng -->
+<div class="p-space-md rounded-xl bg-surface-container-low transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">apartment</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Bãi Trạm Phú Mỹ Hưng (Quận 7)</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">102 Nguyễn Lương Bằng, Tân Phú, Q.7</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-headline-sm text-headline-sm font-bold shadow-sm">10 xe trống</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Đang sạc pin EV / Bảo dưỡng: <strong class="text-on-surface font-semibold">2 xe</strong></span>
+<span class="text-secondary font-semibold">Sức chứa: 42/50 xe</span>
+</div>
+</div>
+<!-- Hub 3: Thảo Điền Thủ Đức -->
+<div class="p-space-md rounded-xl bg-surface-container-low transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-base">villa</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Trạm Thảo Điền (TP. Thủ Đức)</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">18 Quốc Hương, Thảo Điền, Thủ Đức</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-headline-sm text-headline-sm font-bold shadow-sm">0 xe rảnh</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Chờ xe hồi kho sau 18:00: <strong class="text-on-surface font-semibold">5 lượt</strong></span>
+<span class="text-error font-semibold">Hết chỗ trống tạm thời</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tần suất xoay vòng xe hôm nay: <strong class="text-on-surface">3.2 lượt/xe</strong></span>
+<button class="flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline">
+<span class="material-symbols-outlined text-sm">map</span> Xem bản đồ GPS Live
+        </button>
+</div>
+</div>
+</div>
+<!-- Operational Shortcuts & Live Action Banner -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-xl">
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Kiểm tra Phạt nguội Toàn quốc</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tra cứu CSGT &amp; phạt tự động camera</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Lịch Đăng kiểm &amp; Bảo hiểm</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">04 xe hết hạn trong vòng 10 ngày tới</p>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">4 xe</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest text-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">qr_code_scanner</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Bàn giao Xe Tự lái cấp tốc</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chụp ảnh check-in xước xát qua App</p>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">QR Code</span>
+</div>
+</div>
+<!-- Live Schedule & Handover Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-xl">
+<!-- Table Header Toolbar -->
+<div class="p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md bg-surface-container-lowest">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Lịch Bàn giao &amp; Tiếp nhận Xe Hôm Nay</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">28 lượt vận hành</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Theo dõi lịch hẹn khách nhận xe và xe trả về bãi trong ngày 24/10/2024</p>
+</div>
+<!-- Table Filter Actions -->
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="inline-flex rounded-xl bg-surface-container-low p-1">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-semibold shadow-sm">Tất cả (28)</button>
+<button class="px-space-sm py-1.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface">Chờ giao (12)</button>
+<button class="px-space-sm py-1.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface">Chờ thu hồi (9)</button>
+<button class="px-space-sm py-1.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface">Quá hạn (3)</button>
+</div>
+<button class="flex items-center gap-1 px-space-sm py-2 rounded-xl bg-surface-container-low text-on-surface-variant font-label-md text-label-md hover:bg-surface-container">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+          Lọc nâng cao
+        </button>
+</div>
+</div>
+<!-- Data Table View -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-table-data text-table-data">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<tr>
+<th class="py-3 px-space-md font-semibold">Mã đơn &amp; Hợp đồng</th>
+<th class="py-3 px-space-md font-semibold">Khách hàng &amp; Liên hệ</th>
+<th class="py-3 px-space-md font-semibold">Phương tiện &amp; Biển số</th>
+<th class="py-3 px-space-md font-semibold">Hình thức vận hành</th>
+<th class="py-3 px-space-md font-semibold">Nhiên liệu / Pin</th>
+<th class="py-3 px-space-md font-semibold">Thời gian &amp; Địa điểm</th>
+<th class="py-3 px-space-md font-semibold">Trạng thái</th>
+<th class="py-3 px-space-md font-semibold text-right">Thao tác xử lý</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Self-drive pickup waiting -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">#AF-8942</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">HĐ: HD-2024-1002</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary text-xs">
+                  LM
+                </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Lê Minh Tuấn</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0908 123 456 (Cá nhân)</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">Toyota Fortuner Legender 2023</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">51K - 892.45</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs">key</span>
+                Tự lái (3 ngày)
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="w-28">
+<div class="flex justify-between text-xs font-semibold text-on-surface mb-1">
+<span class="text-secondary">Xăng</span>
+<span>90%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">15:00 - Hôm nay</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Giao tại: Bãi Sân bay Tân Bình</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Chờ bàn giao
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface" title="Gọi khách" type="button">
+<span class="material-symbols-outlined text-base">call</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container" type="button">
+                  Xuất xe
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Chauffeur drive in-trip -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">#AF-8938</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">HĐ: VIP-CORP-49</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs">
+                  VS
+                </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Tập đoàn VinaSteel</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Khách: Mr. David Park</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">Kia Carnival Signature 2024</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">51L - 340.12</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">badge</span> Có tài xế
+                </span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Tài: Trần Văn Hùng</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="w-28">
+<div class="flex justify-between text-xs font-semibold text-on-surface mb-1">
+<span class="text-secondary">Dầu Diesel</span>
+<span>75%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">08:00 - 18:30</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lộ trình: Q1 -&gt; KCN Long Thành</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                Đang di chuyển
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface" title="Theo dõi lộ trình GPS" type="button">
+<span class="material-symbols-outlined text-base">gps_fixed</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-high" type="button">
+                  Chi tiết
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Overdue return Alert -->
+<tr class="hover:bg-error-container/20 transition-colors bg-error-container/10">
+<td class="py-3.5 px-space-md">
+<span class="font-headline-sm text-headline-sm text-error font-bold">#AF-8911</span>
+<span class="block font-label-sm text-label-sm text-error">HĐ: HD-2024-0988</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-error text-on-error flex items-center justify-center font-bold text-xs">
+                  NH
+                </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Nguyễn Hoàng Long</div>
+<span class="font-label-sm text-label-sm text-error font-semibold">0977 889 900 (Gọi 2 lần)</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">Hyundai Tucson Turbo 2022</span>
+<span class="font-label-sm text-label-sm text-error font-bold">29A - 671.89</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs">key</span> Tự lái
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="w-28">
+<div class="flex justify-between text-xs font-semibold text-error mb-1">
+<span>Xăng thấp</span>
+<span>18%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 18%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-error font-bold">Hẹn trả: 12:00</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">Trễ 2h 35 phút</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">priority_high</span>
+                Quá hạn trả xe
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-error text-on-error font-label-md text-label-md font-semibold hover:bg-on-error-container" type="button">
+                  Khóa điện từ xa
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container text-error hover:bg-error-container" title="Gọi hotline khẩn cấp" type="button">
+<span class="material-symbols-outlined text-base">emergency</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Completed check-in -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-bold">#AF-8902</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">HĐ: HD-2024-0980</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-xs">
+                  PT
+                </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Phạm Thu Trang</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0912 345 789</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">VinFast VF8 Plus (Điện)</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">51K - 923.11</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs">bolt</span> Tự lái (EV)
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="w-28">
+<div class="flex justify-between text-xs font-semibold text-secondary mb-1">
+<span>Pin EV</span>
+<span>62%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 62%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Đã nhận: 13:45</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Trả tại: Bãi Quận 7</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs text-secondary">check</span>
+                Đã hoàn tất
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container" type="button">
+                  Biên bản nghiệm thu
+                </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer Status -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span>Hiển thị <strong>4</strong> trên <strong>28</strong> hợp đồng trong ngày</span>
+<span class="text-outline">|</span>
+<span class="text-secondary font-medium">Đồng bộ GPS trạm 30s/lần</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md disabled:opacity-50" disabled="">Trang trước</button>
+<span class="px-space-sm py-1 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold">1</span>
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container">2</button>
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container">3</button>
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container">Trang sau</button>
+</div>
+</div>
+</div>
+<!-- Operational Footer Insight Banner -->
+<div class="rounded-xl p-space-md bg-gradient-to-r from-primary-container via-primary to-primary text-on-primary flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest/15 flex items-center justify-center text-secondary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-2xl">traffic</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm font-bold">Cảnh báo Giao thông Chiều Nay: Cầu Sài Gòn &amp; Trục Cộng Hòa ùn tắc cục bộ</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container">Đã tự động gửi thông báo điều hướng lộ trình tránh kẹt xe cho 14 tài xế đang chạy hợp đồng đón tiễn sân bay.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-2 rounded-xl bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-bold hover:bg-secondary-fixed transition-all">
+        Gửi thông báo Zalo đội xe
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for dynamic clock display in Vietnamese standard
+  (function updateClock() {
+    const clockEl = document.getElementById('realtime-clock');
+    if (!clockEl) return;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    clockEl.textContent = `Cập nhật lúc: ${hours}:${minutes} - ${day}/${month}/${year}`;
+    setTimeout(updateClock, 30000);
+  })();
+</script></main></div></body></html>
