@@ -7,6 +7,7 @@ export default function BookingModal({
   vehicle,
   initialDate,
   defaultCustomer,
+  isCustomerMode = false,
   onClose,
   onSuccess,
 }) {
@@ -85,14 +86,22 @@ export default function BookingModal({
     e.preventDefault();
     setError("");
     setSubmitting(true);
+    const computedDeposit = isCustomerMode
+      ? Math.round(estimate.total * 0.3)
+      : Number(form.deposit_amount);
     try {
       await api.createContract({
         vehicle_id: vehicle.id,
         ...form,
         delivery_distance_km: Number(form.delivery_distance_km),
-        deposit_amount: Number(form.deposit_amount),
-        handover_odometer: Number(form.handover_odometer),
-        handover_fuel_percent: Number(form.handover_fuel_percent),
+        deposit_amount: computedDeposit,
+        handover_odometer: isCustomerMode
+          ? vehicle.current_odometer
+          : Number(form.handover_odometer),
+        handover_fuel_percent: isCustomerMode ? 100 : Number(form.handover_fuel_percent),
+        handover_notes: isCustomerMode
+          ? "Khách hàng đặt xe trực tuyến"
+          : form.handover_notes,
       });
       onSuccess();
     } catch (err) {
@@ -112,7 +121,7 @@ export default function BookingModal({
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900">
-                Lập Hợp Đồng & Giao Xe (Chuẩn Mioto)
+                {isCustomerMode ? "Đặt Xe & Xác Nhận Thuê" : "Lập Hợp Đồng & Giao Xe"}
               </h3>
               <p className="text-xs text-slate-500">
                 {vehicle.brand} {vehicle.model} — {vehicle.license_plate} ({vehicle.location_district})
@@ -137,33 +146,45 @@ export default function BookingModal({
               <User className="h-4 w-4 text-slate-500" /> Thông tin khách hàng
             </h4>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <input
-                required
-                placeholder="Họ và tên khách hàng *"
-                className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
-                value={form.customer_name}
-                onChange={(e) => setForm({ ...form, customer_name: e.target.value })}
-              />
-              <input
-                required
-                placeholder="Số điện thoại *"
-                className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
-                value={form.customer_phone}
-                onChange={(e) => setForm({ ...form, customer_phone: e.target.value })}
-              />
-              <input
-                required
-                placeholder="Số CCCD gắn chip *"
-                className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
-                value={form.customer_id_card}
-                onChange={(e) => setForm({ ...form, customer_id_card: e.target.value })}
-              />
-              <input
-                placeholder="Số GPLX B1/B2 (nếu tự lái)"
-                className="rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
-                value={form.customer_driver_license}
-                onChange={(e) => setForm({ ...form, customer_driver_license: e.target.value })}
-              />
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Họ và tên *</label>
+                <input
+                  required
+                  placeholder="Họ và tên khách hàng"
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
+                  value={form.customer_name}
+                  onChange={(e) => setForm({ ...form, customer_name: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Số điện thoại *</label>
+                <input
+                  required
+                  placeholder="Số điện thoại liên hệ"
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
+                  value={form.customer_phone}
+                  onChange={(e) => setForm({ ...form, customer_phone: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Số CCCD / CMND *</label>
+                <input
+                  required
+                  placeholder="Số CCCD gắn chip"
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
+                  value={form.customer_id_card}
+                  onChange={(e) => setForm({ ...form, customer_id_card: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Số GPLX (nếu tự lái)</label>
+                <input
+                  placeholder="Số Giấy phép lái xe B1/B2"
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none"
+                  value={form.customer_driver_license}
+                  onChange={(e) => setForm({ ...form, customer_driver_license: e.target.value })}
+                />
+              </div>
             </div>
           </div>
 
@@ -273,15 +294,25 @@ export default function BookingModal({
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-500">Tiền cọc giữ chỗ</label>
-                <input
-                  type="number"
-                  min="0"
-                  step="100000"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-                  value={form.deposit_amount}
-                  onChange={(e) => setForm({ ...form, deposit_amount: e.target.value })}
-                />
+                <label className="mb-1 block text-xs font-medium text-slate-500">
+                  {isCustomerMode ? "Tiền cọc giữ chỗ (30%)" : "Tiền cọc giữ chỗ"}
+                </label>
+                {isCustomerMode ? (
+                  <input
+                    readOnly
+                    className="w-full rounded-xl border border-slate-200 bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700"
+                    value={formatVND(Math.round(estimate.total * 0.3))}
+                  />
+                ) : (
+                  <input
+                    type="number"
+                    min="0"
+                    step="100000"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                    value={form.deposit_amount}
+                    onChange={(e) => setForm({ ...form, deposit_amount: e.target.value })}
+                  />
+                )}
               </div>
               <div>
                 <label className="mb-1 flex items-center gap-1 text-xs font-medium text-slate-500">
@@ -297,40 +328,42 @@ export default function BookingModal({
             </div>
           </div>
 
-          {/* Biên bản giao xe */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-500">Odo lúc giao (km)</label>
-              <input
-                type="number"
-                min="0"
-                required
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
-                value={form.handover_odometer}
-                onChange={(e) => setForm({ ...form, handover_odometer: e.target.value })}
-              />
+          {/* Biên bản giao xe (chỉ hiển thị cho Admin/Nhân viên bãi xe) */}
+          {!isCustomerMode && (
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Odo lúc giao (km)</label>
+                <input
+                  type="number"
+                  min="0"
+                  required
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
+                  value={form.handover_odometer}
+                  onChange={(e) => setForm({ ...form, handover_odometer: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Nhiên liệu (%)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  required
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
+                  value={form.handover_fuel_percent}
+                  onChange={(e) => setForm({ ...form, handover_fuel_percent: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-slate-500">Ghi chú giao xe</label>
+                <input
+                  className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
+                  value={form.handover_notes}
+                  onChange={(e) => setForm({ ...form, handover_notes: e.target.value })}
+                />
+              </div>
             </div>
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-500">Nhiên liệu (%)</label>
-              <input
-                type="number"
-                min="0"
-                max="100"
-                required
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
-                value={form.handover_fuel_percent}
-                onChange={(e) => setForm({ ...form, handover_fuel_percent: e.target.value })}
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-500">Ghi chú giao xe</label>
-              <input
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
-                value={form.handover_notes}
-                onChange={(e) => setForm({ ...form, handover_notes: e.target.value })}
-              />
-            </div>
-          </div>
+          )}
 
           {/* Tạm tính */}
           <div className="space-y-1 rounded-xl bg-slate-50 p-4 text-sm">
@@ -381,7 +414,11 @@ export default function BookingModal({
               disabled={submitting}
               className="rounded-xl bg-emerald-600 px-5 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
             >
-              {submitting ? "Đang xử lý..." : "Xác nhận đặt xe & Lập hợp đồng"}
+              {submitting
+                ? "Đang xử lý..."
+                : isCustomerMode
+                ? "Xác nhận đặt xe"
+                : "Xác nhận lập hợp đồng & Giao xe"}
             </button>
           </div>
         </form>

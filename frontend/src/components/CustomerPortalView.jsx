@@ -348,6 +348,7 @@ export default function CustomerPortalView({
           vehicle={bookingTarget.vehicle}
           initialDate={bookingTarget.initialDate}
           defaultCustomer={profileForm}
+          isCustomerMode={true}
           onClose={() => setBookingTarget(null)}
           onSuccess={() => {
             setBookingTarget(null);
