@@ -1,13 +1,22 @@
 const API_BASE = "/api";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const SUPABASE_BUCKET = "vehicle-media";
 
 async function request(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: { "Content-Type": "application/json", ...(options.headers || {}) },
     ...options,
   });
-  const data = await res.json().catch(() => ({}));
+  const text = await res.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch {
+    data = { detail: res.status === 413 ? "File vượt quá giới hạn 4.5MB của Vercel Serverless." : text };
+  }
   if (!res.ok) {
-    throw new Error(data.detail || "Có lỗi xảy ra khi gọi API");
+    throw new Error(data.detail || `Lỗi HTTP ${res.status}`);
   }
   return data;
 }
@@ -39,8 +48,35 @@ export const api = {
   getVehicleDetail: (id) => request(`/vehicles/${id}`),
   createVehicle: (payload) =>
     request("/vehicles", { method: "POST", body: JSON.stringify(payload) }),
-  uploadVehicleMedia: (file) =>
-    new Promise((resolve, reject) => {
+  uploadVehicleMedia: async (file) => {
+    if (SUPABASE_URL && SUPABASE_KEY) {
+      const ext = file.name.split(".").pop()?.toLowerCase() || "bin";
+      const objectPath = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${ext}`;
+      const uploadRes = await fetch(
+        `${SUPABASE_URL}/storage/v1/object/${SUPABASE_BUCKET}/${objectPath}`,
+        {
+          method: "POST",
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+            "Content-Type": file.type || "application/octet-stream",
+            "x-upsert": "true",
+          },
+          body: file,
+        }
+      );
+      if (!uploadRes.ok) {
+        const errBody = await uploadRes.json().catch(() => ({}));
+        throw new Error(
+          errBody.message || errBody.error || "Upload lên Supabase Storage thất bại (kiểm tra bucket 'vehicle-media')."
+        );
+      }
+      return {
+        url: `${SUPABASE_URL}/storage/v1/object/public/${SUPABASE_BUCKET}/${objectPath}`,
+      };
+    }
+
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = async () => {
         try {
@@ -58,7 +94,8 @@ export const api = {
       };
       reader.onerror = () => reject(new Error("Không thể đọc file tải lên"));
       reader.readAsDataURL(file);
-    }),
+    });
+  },
   addVehicleReview: (id, payload) =>
     request(`/vehicles/${id}/reviews`, {
       method: "POST",
